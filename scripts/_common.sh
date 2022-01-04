@@ -22,7 +22,7 @@ write_bridge_config () {
 	matrix_server_supports_asmux="false"
 	log_filename="/var/log/$app/$app.log"
 	log_level="error"
-	ynh_add_config --template="config.yaml" --destination="$mautrix_config_path"
+	ynh_add_config --template="../conf/config.yaml" --destination="$mautrix_config_path"
 }
 
 #=================================================
