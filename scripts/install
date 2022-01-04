@@ -58,7 +58,6 @@ synapse_db_user="matrix_$synapse_instance"
 # SET CONSTANTS
 #=================================================
 
-mautrix_bridge_db_user=$app
 upstream_version=$(ynh_app_upstream_version)
 
 #=================================================
@@ -96,9 +95,7 @@ ynh_app_setting_set --app=$app --key=botusers --value=$botusers
 ynh_app_setting_set --app=$app --key=apiid --value=$apiid
 ynh_app_setting_set --app=$app --key=apihash --value=$apihash
 ynh_app_setting_set --app=$app --key=bottoken --value=$bottoken
-
 ynh_app_setting_set --app=$app --key=mautrix_version --value=$upstream_version
-
 
 #=================================================
 # INSTALL DEPENDENCIES
