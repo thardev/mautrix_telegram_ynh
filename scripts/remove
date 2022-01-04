@@ -22,6 +22,9 @@ app_service_registration_path=$(ynh_app_setting_get --app=$app --key=app_service
 botname=$(ynh_app_setting_get --app=$app --key=botname)
 port=$(ynh_app_setting_get --app=$app --key=port)
 final_path=$(ynh_app_setting_get --app=$app --key=final_path)
+db_name=$(ynh_app_setting_get --app=$app --key=db_name)
+db_user=$db_name
+db_pwd=$(ynh_app_setting_get --app=$app --key=psqlpwd)
 
 #=================================================
 # SET CONSTANTS
@@ -29,9 +32,6 @@ final_path=$(ynh_app_setting_get --app=$app --key=final_path)
 
 synapse_db_name="matrix_$synapse_instance"
 botname_synapse_db_user="@$botname:$server_name"
-mautrix_bridge_user=$app
-mautrix_bridge_db_name=$app
-mautrix_bridge_db_user=$app
 
 #=================================================
 # STANDARD REMOVE
@@ -112,7 +112,7 @@ ynh_secure_remove --file="/var/log/$app"
 ynh_script_progression --message="Removing the dedicated system user..." --weight=5
 
 # Delete a system user
-ynh_system_user_delete --username=$mautrix_bridge_user
+ynh_system_user_delete --username=$app
 
 #=================================================
 # END OF SCRIPT

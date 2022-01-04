@@ -23,9 +23,9 @@ botname=$(ynh_app_setting_get --app=$app --key=botname)
 synapse_instance=$(ynh_app_setting_get --app=$app --key=synapse_instance)
 app_service_registration_path=$(ynh_app_setting_get --app=$app --key=app_service_registration_path)
 encryption=$(ynh_app_setting_get --app=$app --key=encryption)
-mautrix_bridge_user=$app
-mautrix_bridge_db_name=$(ynh_app_setting_get --app=$app --key=mautrix_bridge_db_name)
-mautrix_bridge_db_pwd=$(ynh_app_setting_get --app=$app --key=mautrix_bridge_db_pwd)
+db_name=$(ynh_app_setting_get --app=$app --key=db_name)
+db_user=$db_name
+db_pwd=$(ynh_app_setting_get --app=$app --key=psqlpwd)
 botadmin=$(ynh_app_setting_get --app=$app --key=botadmin)
 botusers=$(ynh_app_setting_get --app=$app --key=botusers)
 
@@ -107,7 +107,7 @@ ynh_exec_warn_less ynh_install_app_dependencies $pkg_dependencies
 ynh_script_progression --message="Making sure dedicated system user exists..." --weight=1
 
 # Create a dedicated user (if not existing)
-ynh_system_user_create --username=$mautrix_bridge_user
+ynh_system_user_create --username=$app
 
 #=================================================
 # SPECIFIC UPGRADE
@@ -168,7 +168,7 @@ ynh_store_file_checksum --file="$final_path/alembic.ini"
 #=================================================
 
 # Set permissions on app files
-chown $mautrix_bridge_user:root -R $final_path
+chown $app:root -R $final_path
 
 #=================================================
 # SETUP LOGROTATE

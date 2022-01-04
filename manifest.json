@@ -9,7 +9,7 @@
 	"version": "0.10.2~ynh3",
 	"url": "https://docs.mau.fi/bridges/python/telegram/index.html",
 	"upstream": {
-        "license": "free",
+        "license": "AGPL-3.0-or-later",
         "website": "https://docs.mau.fi/bridges/python/telegram/index.html",
         "admindoc": "https://github.com/YunoHost-Apps/mautrix_telegram_ynh",
         "userdoc": "https://docs.mau.fi/bridges/python/telegram/management-commands.html",
@@ -22,7 +22,7 @@
 		"url": "https://github.com/YunoHost-Apps/mautrix_telegram_ynh"
 	},
 	"requirements": {
-		"yunohost": ">= 4.2.4"
+		"yunohost": ">= 4.3.0"
 	},
 	"multi_instance": true,
 	"services": [
